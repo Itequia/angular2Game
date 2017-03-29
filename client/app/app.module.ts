@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule }  from '@angular/platform-browser'
-import { HttpModule }    from '@angular/http'
+import { HttpModule,Http }    from '@angular/http'
 import { FormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router';
 
@@ -8,10 +8,18 @@ import { AppComponent } from './app.component'
 
 import { GameboyComponent } from './gameboy/gameboy.component'
 import { GameboyScreenComponent } from './gameboy/components/gameboy-screen.component'
+import { GameboyArrowComponent } from './gameboy/components/gameboy-arrows.component'
+import { GameboyButtonsComponent} from './gameboy/components/gameboy-buttons.component'
 import { GameboyLogicService } from './gameboy/services/gameboy-logic.service'
-import { ButtonUpComponent } from './gameboy/components/button-up.component'
-import { ScreenItemComponent } from './gameboy/components/screen-item.component'
-import { GameListComponent } from './game-list/game-list.component'
+
+import { GameListComponent } from './game-list/components/game-list.component'
+import { GameListService } from './game-list/services/game-list.service'
+
+import { AboutComponent } from './about/components/about.component'
+import { AboutService } from './about/services/about.service'
+import { ReverseCustomPipe } from './customPipe/reverseCustomPipe.component'
+
+import { AppHttpService } from './services/app-http-service'
 import { appRoutes } from './routes'
 
 
@@ -20,16 +28,24 @@ import { appRoutes } from './routes'
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpModule,
-    FormsModule
-  ],
+    FormsModule  
+    ],
   declarations: [
     AppComponent,
     GameboyComponent,
     GameboyScreenComponent,
-    GameListComponent
+    GameboyArrowComponent,
+    GameboyButtonsComponent,
+    GameListComponent,
+    AboutComponent,
+    ReverseCustomPipe
+
   ],
   providers: [
-    GameboyLogicService
+    GameboyLogicService,
+    AppHttpService,
+    AboutService,
+    GameListService
   ],
   bootstrap: [ AppComponent ]
 })
